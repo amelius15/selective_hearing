@@ -18,7 +18,15 @@ p = pyaudio.PyAudio()
 def callback(in_data, frame_count, time_info, status):
     data = np.fromstring(in_data, 'Float32')
     print(len(data))
-    if True:
+
+    # data has NaNs in it; filter them out
+    data_i = np.arange(len(data))
+    mask = np.isfinite(data)
+    filtered_data = np.interp(data_i, data_i[mask], data[mask])
+
+    fft_data = np.fft.fft(filtered_data)
+    print(fft_data)
+    if False:
         return (in_data, pyaudio.paContinue)
     else:
         return (np.zeros(len(data)), pyaudio.paContinue)
