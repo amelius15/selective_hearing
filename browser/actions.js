@@ -41,3 +41,21 @@ export function justineOff() {
         payload: {}
     }
 }
+
+export function sendChanges(allow_change) {
+    return function(dispatch, getState){
+        return fetch('/state', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({'allow': [allow_change]})
+            })
+            .then(response => response.json())
+            .catch( (err) => {
+                console.log(err)
+                alert(err)
+                throw err
+            })
+    }
+}

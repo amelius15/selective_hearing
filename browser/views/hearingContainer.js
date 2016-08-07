@@ -1,12 +1,13 @@
 import Immutable from 'immutable'
 import { connect } from 'react-redux'
 import Hearing from './hearing'
-import { fireOn, fireOff, anthonyOn, anthonyOff, justineOn, justineOff } from '../actions'
+import { fireOn, fireOff, anthonyOn, anthonyOff, justineOn, justineOff, sendChanges } from '../actions'
 
-const mapStateToProps = (state) => {
-    let isFire = state.getIn(['index', 'isFire'])
-    let isJustine = state.getIn(['index', 'isJustine'])
-    let isAnthony = state.getIn(['index', 'isAnthony'])
+function mapStateToProps(state, ownProps) {
+    let isFire = state.getIn(['index', 'isFire'])  || false
+    let isJustine = state.getIn(['index', 'isJustine']) || false
+    let isAnthony = state.getIn(['index', 'isAnthony']) || false
+
     return {
         isFire: isFire,
         isJustine: isJustine,
@@ -14,7 +15,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+function mapDispatchToProps(dispatch, ownProps) {
     return {
         handleFireClick: (e) => {
             e.preventDefault()
@@ -24,6 +25,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             else {
                 dispatch(fireOn())
             }
+            console.log(ownProps)
+            console.log(ownProps.isFire)
+            console.log(ownProps.isFire ? 'fire' : '')
+            dispatch(sendChanges('fire'))
         },
         handleAnthonyClick: (e) => {
             e.preventDefault()
@@ -33,6 +38,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             else {
                 dispatch(anthonyOn())
             }
+            dispatch(sendChanges(ownProps.isFire ? 'anthony' : ''))
         },
         handleJustineClick: (e) => {
             e.preventDefault()
@@ -42,6 +48,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             else {
                 dispatch(justineOn())
             }
+            dispatch(sendChanges(ownProps.isFire ? 'anthony' : ''))
         }
     }
 }
