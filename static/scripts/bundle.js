@@ -294,7 +294,7 @@ var AnthonyButton = function (_Component) {
         value: function render() {
             return _react2.default.createElement(
                 "svg",
-                { className: "anthonyButton" },
+                { className: "anthonyButton", onClick: this.props.handleClick },
                 _react2.default.createElement("polygon", { points: "70, 55 70, 145 145, 100", fill: "#fff" })
             );
         }
@@ -304,6 +304,11 @@ var AnthonyButton = function (_Component) {
 }(_react.Component);
 
 exports.default = AnthonyButton;
+
+
+AnthonyButton.propTypes = {
+    handleClick: _react.PropTypes.func.isRequired
+};
 
 },{"react":559}],8:[function(require,module,exports){
 "use strict";
@@ -340,7 +345,7 @@ var FireButton = function (_Component) {
         value: function render() {
             return _react2.default.createElement(
                 "svg",
-                { className: "fireButton" },
+                { className: "fireButton", onClick: this.props.handleClick },
                 _react2.default.createElement("polygon", { points: "70, 55 70, 145 145, 100", fill: "#fff" })
             );
         }
@@ -350,6 +355,11 @@ var FireButton = function (_Component) {
 }(_react.Component);
 
 exports.default = FireButton;
+
+
+FireButton.propTypes = {
+    handleClick: _react.PropTypes.func.isRequired
+};
 
 },{"react":559}],9:[function(require,module,exports){
 'use strict';
@@ -415,9 +425,9 @@ var Hearing = function (_Component) {
                     ),
                     ' your headphones'
                 ),
-                _react2.default.createElement(_fireButton2.default, { onClick: props.handleFireClick }),
-                _react2.default.createElement(_anthonyButton2.default, { onClick: props.handleAnthonyClick }),
-                _react2.default.createElement(_justineButton2.default, { onClick: props.handleJustineClick })
+                _react2.default.createElement(_fireButton2.default, { handleClick: this.props.handleFireClick }),
+                _react2.default.createElement(_anthonyButton2.default, { handleClick: this.props.handleAnthonyClick }),
+                _react2.default.createElement(_justineButton2.default, { handleClick: this.props.handleJustineClick })
             );
         }
     }]);
@@ -459,7 +469,14 @@ var _actions = require('../actions');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
-    return state;
+    var isFire = state.getIn(['index', 'isFire']);
+    var isJustine = state.getIn(['index', 'isJustine']);
+    var isAnthony = state.getIn(['index', 'isAnthony']);
+    return {
+        isFire: isFire,
+        isJustine: isJustine,
+        isAnthony: isAnthony
+    };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
@@ -530,7 +547,7 @@ var JustineButton = function (_Component) {
         value: function render() {
             return _react2.default.createElement(
                 "svg",
-                { className: "justineButton" },
+                { className: "justineButton", onClick: this.props.handleClick },
                 _react2.default.createElement("polygon", { points: "70, 55 70, 145 145, 100", fill: "#fff" })
             );
         }
@@ -540,6 +557,11 @@ var JustineButton = function (_Component) {
 }(_react.Component);
 
 exports.default = JustineButton;
+
+
+JustineButton.propTypes = {
+    handleClick: _react.PropTypes.func.isRequired
+};
 
 },{"react":559}],12:[function(require,module,exports){
 (function (global){
