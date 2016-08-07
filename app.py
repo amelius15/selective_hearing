@@ -15,10 +15,7 @@ def login():
         with open('connection.txt', 'w') as fs:
             for i in allow_things:
                 fs.write(i + '\n')
-<<<<<<< HEAD
         return jsonify({"allow":allow_things}) 
-=======
->>>>>>> bee59e5... much more stuff than you should have in one commit
     else:
         allow_things = []
         with open('connection.txt', 'r') as fs:
