@@ -524,7 +524,7 @@ function mapDispatchToProps(dispatch, ownProps) {
             } else {
                 dispatch((0, _actions.anthonyOn)());
             }
-            dispatch((0, _actions.sendChanges)(ownProps.isFire ? 'anthony' : ''));
+            dispatch((0, _actions.sendChanges)('anthony'));
         },
         handleJustineClick: function handleJustineClick(e) {
             e.preventDefault();
@@ -533,7 +533,7 @@ function mapDispatchToProps(dispatch, ownProps) {
             } else {
                 dispatch((0, _actions.justineOn)());
             }
-            dispatch((0, _actions.sendChanges)(ownProps.isFire ? 'anthony' : ''));
+            dispatch((0, _actions.sendChanges)('justine'));
         }
     };
 }

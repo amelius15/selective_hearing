@@ -38,7 +38,7 @@ function mapDispatchToProps(dispatch, ownProps) {
             else {
                 dispatch(anthonyOn())
             }
-            dispatch(sendChanges(ownProps.isFire ? 'anthony' : ''))
+            dispatch(sendChanges('anthony'))
         },
         handleJustineClick: (e) => {
             e.preventDefault()
@@ -48,7 +48,7 @@ function mapDispatchToProps(dispatch, ownProps) {
             else {
                 dispatch(justineOn())
             }
-            dispatch(sendChanges(ownProps.isFire ? 'anthony' : ''))
+            dispatch(sendChanges('justine'))
         }
     }
 }
