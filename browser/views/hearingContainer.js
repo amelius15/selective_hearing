@@ -4,7 +4,14 @@ import Hearing from './hearing'
 import { fireOn, fireOff, anthonyOn, anthonyOff, justineOn, justineOff } from '../actions'
 
 const mapStateToProps = (state) => {
-    return state
+    let isFire = state.getIn(['index', 'isFire'])
+    let isJustine = state.getIn(['index', 'isJustine'])
+    let isAnthony = state.getIn(['index', 'isAnthony'])
+    return {
+        isFire: isFire,
+        isJustine: isJustine,
+        isAnthony: isAnthony
+    }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

@@ -1,3 +1,4 @@
+
 from flask import Flask, request, send_from_directory, jsonify, send_file, render_template
 import json
 import logging
@@ -32,5 +33,6 @@ def login():
             allow_things = [i.strip() for i in fs.readlines()]
         return jsonify({"allow":allow_things}) 
 
-if __name__ == "__main__":
-    app.run()
+
+if __name__ == '__main__':
+    app.run(debug=True)

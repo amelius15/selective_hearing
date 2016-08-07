@@ -9,9 +9,9 @@ export default class Hearing extends Component {
             <div className='hearing'>
                 <h1>selective hearing</h1>
                 <h2>for you <em>and</em> your headphones</h2>
-                <FireButton onClick={ props.handleFireClick } />
-                <AnthonyButton onClick={ props.handleAnthonyClick } />
-                <JustineButton onClick={ props.handleJustineClick } />
+                <FireButton handleClick={ this.props.handleFireClick } />
+                <AnthonyButton handleClick={ this.props.handleAnthonyClick } />
+                <JustineButton handleClick={ this.props.handleJustineClick } />
             </div>
         )
     }
