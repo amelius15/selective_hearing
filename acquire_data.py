@@ -13,13 +13,13 @@ WIDTH = 2
 CHANNELS = 2
 RATE = 44100
 
-max_points = 1000
+max_points = 10000
 
 index = 1
 
 data_set = None
 
-label = 'NULL'
+label = 'ANTHONY'
 
 p = pyaudio.PyAudio()
 
@@ -40,6 +40,8 @@ def callback(in_data, frame_count, time_info, status):
     else:
         data_set = real_fft
     index += 1
+    if index % 1000 == 0:
+        print(index)
     if False:
         return (in_data, pyaudio.paContinue)
     else:
